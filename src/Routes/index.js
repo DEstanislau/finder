@@ -11,7 +11,11 @@ const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Started" component={Started} />
+        <Stack.Screen
+          options={{ headerShown: false }}
+          name="Started"
+          component={Started}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
