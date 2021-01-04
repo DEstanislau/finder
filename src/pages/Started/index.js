@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-import { StatusBar } from "expo-status-bar";
-import { Ionicons } from "@expo/vector-icons";
+import { StatusBar } from 'expo-status-bar';
+import { Ionicons } from '@expo/vector-icons';
 
 import {
   Container,
@@ -11,9 +11,9 @@ import {
   Title,
   Button,
   ButtonText,
-} from "./styles";
+} from './styles';
 
-import StartedImage from "../../assets/home_image.svg";
+import StartedImage from '../../assets/home_image.svg';
 
 const Started = ({ navigation }) => {
   return (
@@ -29,7 +29,7 @@ const Started = ({ navigation }) => {
       </TitleContainer>
 
       <ButtonContainer>
-        <Button onPress={() => navigation.navigate("Home")}>
+        <Button onPress={() => navigation.navigate('Home')}>
           <ButtonText> Comece Agora! </ButtonText>
         </Button>
       </ButtonContainer>
