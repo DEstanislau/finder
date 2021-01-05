@@ -1,6 +1,8 @@
-import React from "react";
+import './src/config/ReactotronConfig.js';
 
-import Routes from "./src/Routes";
+import React from 'react';
+
+import Routes from './src/Routes';
 
 const App = () => {
   return <Routes />;

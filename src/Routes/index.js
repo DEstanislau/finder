@@ -1,9 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
-import Started from "../pages/Started";
+import Started from '../pages/Started';
+import Home from '../pages/Home';
 
 const Stack = createStackNavigator();
 
@@ -15,6 +16,11 @@ const Routes = () => {
           options={{ headerShown: false }}
           name="Started"
           component={Started}
+        />
+        <Stack.Screen
+          options={{ title: 'Repositórios' }}
+          name="Home"
+          component={Home}
         />
       </Stack.Navigator>
     </NavigationContainer>
