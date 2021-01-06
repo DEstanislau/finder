@@ -13,27 +13,30 @@ const Home = () => {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  async function reloadRepositories() {
+    if (repositories.length >= 10) {
+      setLoading(true);
+
+      const response = await api.get(
+        `repositories?q=${nameRepo}in:name&per_page=10&page=${page + 1}`,
+      );
+
+      setRepositories([...repositories, ...response.data.items]);
+      setPage(page + 1);
+      setLoading(false);
+    }
+  }
+
   async function loadRepositories() {
+    setPage(1);
     setLoading(true);
 
     const response = await api.get(
-      `repositories?q=${nameRepo}in:name&per_page=10&page=${page}`,
+      `repositories?q=${nameRepo}in:name&per_page=10&page=1`,
     );
 
     setRepositories(response.data.items);
     setLoading(false);
-  }
-
-  function reloadRepositories() {
-    setPage(page + 1);
-    loadRepositories();
-    setRepositories([...repositories, ...response.data.items]);
-    setLoading(false);
-  }
-
-  async function handleSubmit() {
-    loadRepositories();
-    setPage(1);
   }
 
   return (
@@ -46,9 +49,9 @@ const Home = () => {
           value={nameRepo}
           onChangeText={setNameRepo}
           returnKeyType="send"
-          onSubmitEditing={handleSubmit}
+          onSubmitEditing={loadRepositories}
         />
-        <Button onPress={handleSubmit}>
+        <Button onPress={loadRepositories}>
           <AntDesign name="search1" size={20} color="#fff" />
         </Button>
       </Form>
@@ -62,7 +65,7 @@ const Home = () => {
             renderItem={({ item }) => <Repositories data={item} />}
           />
         )}
-        {loading && <ActivityIndicator size={'large'} color={'#0000ff'} />}
+        {loading && <ActivityIndicator size={'small'} color={'#0000ff'} />}
       </ListContainer>
     </Container>
   );

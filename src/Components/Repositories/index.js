@@ -13,7 +13,7 @@ export default function Appointment({ data }) {
     >
       <Avatar
         source={{
-          uri: data.owner.avatar_url
+          uri: data
             ? data.owner.avatar_url
             : `https://robohash.org/${data.owner.id}.png`,
         }}
