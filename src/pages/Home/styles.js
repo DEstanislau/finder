@@ -46,3 +46,10 @@ export const ListContainer = styled.View`
 export const List = styled.FlatList.attrs({
   showsVerticalScrollIndicator: false,
 })``;
+
+export const Alert = styled.Text`
+  color: red;
+  font-size: 15px;
+  font-weight: bold;
+  align-self: center;
+`;

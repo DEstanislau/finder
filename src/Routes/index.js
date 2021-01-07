@@ -11,7 +11,13 @@ const Stack = createStackNavigator();
 const Routes = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleStyle: {
+            alignSelf: 'center',
+          },
+        }}
+      >
         <Stack.Screen
           options={{ headerShown: false }}
           name="Started"

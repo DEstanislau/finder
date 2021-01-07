@@ -3,6 +3,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { Ionicons } from '@expo/vector-icons';
 
+import * as Animatable from 'react-native-animatable';
+
 import {
   Container,
   ImageContainer,
@@ -15,9 +17,11 @@ import {
 
 import StartedImage from '../../assets/home_image.svg';
 
+const AnimatedContainer = Animatable.createAnimatableComponent(Container);
+
 const Started = ({ navigation }) => {
   return (
-    <Container>
+    <AnimatedContainer useNativeDriver animation="bounceInLeft">
       <StatusBar style="auto" />
       <ImageContainer>
         <StartedImage width={250} height={250} />
@@ -29,11 +33,18 @@ const Started = ({ navigation }) => {
       </TitleContainer>
 
       <ButtonContainer>
-        <Button onPress={() => navigation.navigate('Home')}>
+        <Button
+          onPress={() =>
+            navigation.reset({
+              index: 0,
+              routes: [{ name: 'Home' }],
+            })
+          }
+        >
           <ButtonText> Comece Agora! </ButtonText>
         </Button>
       </ButtonContainer>
-    </Container>
+    </AnimatedContainer>
   );
 };
 
